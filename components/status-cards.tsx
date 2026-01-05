@@ -2,12 +2,12 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Booking } from "@/lib/types";
+import { Appointment } from "@/lib/types";
 
 import { Users, Hourglass, Activity, CheckCircle2 } from "lucide-react";
 
 type Props = {
-  bookings: Booking[];
+  bookings: Appointment[];
 };
 
 export default function StatusCards({ bookings }: Props) {
