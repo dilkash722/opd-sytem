@@ -142,10 +142,21 @@ export function BookingModal({
               />
 
               <div className="flex justify-end gap-2 pt-4">
-                <Button type="button" variant="outline" onClick={onClose}>
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={onClose}
+                  className="text-neutral-200 border-neutral-700 hover:border-neutral-500 bg-transparent"
+                >
                   Cancel
                 </Button>
-                <Button type="submit">Confirm Appointment</Button>
+
+                <Button
+                  type="submit"
+                  className="bg-white text-black hover:bg-neutral-200"
+                >
+                  Confirm Appointment
+                </Button>
               </div>
             </form>
           </>
