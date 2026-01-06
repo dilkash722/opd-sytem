@@ -3,12 +3,15 @@
 import { useEffect, useState } from "react";
 import { Typewriter } from "react-simple-typewriter";
 import {
-  Stethoscope,
+  CheckCircle2,
+  CreditCard,
   Clock,
   CalendarCheck,
-  PhoneCall,
   CalendarPlus,
+  PhoneCall,
+  Hash,
   Lock,
+  Hospital,
 } from "lucide-react";
 
 import { storage } from "@/lib/storage";
@@ -38,96 +41,102 @@ export default function HeroSection() {
       {/* ===== DARK OVERLAY ===== */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-black" />
 
-      {/* ===== CONTENT (TOP ALIGNED) ===== */}
-      <div className="relative z-10">
-        <div className="w-full px-4 sm:px-6 lg:px-20 pt-8 sm:pt-16">
-          <div className="max-w-3xl space-y-7">
-            {/* HEADING */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight leading-[1.05]">
-              OPD Appointment
-              <span className="block mt-4 text-neutral-400 text-2xl sm:text-3xl font-medium min-h-[1.4em]">
-                <Typewriter
-                  words={[
-                    "Book OPD online",
-                    "Track token live",
-                    "Visit on your turn",
-                    "Smart OPD system",
-                  ]}
-                  loop={0}
-                  cursor
-                  typeSpeed={48}
-                  deleteSpeed={28}
-                  delaySpeed={1600}
-                />
-              </span>
-            </h1>
+      {/* ===== CONTENT ===== */}
+      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-20 pt-8 sm:pt-16">
+        <div className="max-w-3xl space-y-7">
+          {/* HEADING */}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight leading-[1.05]">
+            OPD Appointment
+            <span className="block mt-4 text-neutral-400 text-2xl sm:text-3xl font-medium min-h-[1.4em]">
+              <Typewriter
+                words={[
+                  "Book OPD online",
+                  "Track token live",
+                  "Visit on your turn",
+                  "Smart OPD system",
+                ]}
+                loop={0}
+                cursor
+                typeSpeed={48}
+                deleteSpeed={28}
+                delaySpeed={1600}
+              />
+            </span>
+          </h1>
 
+          {/* DESCRIPTION + STEPS */}
+          <div className="max-w-xl space-y-4">
             {/* DESCRIPTION */}
-            <p className="max-w-xl text-base sm:text-lg leading-relaxed text-neutral-400">
+            <p className="text-base sm:text-lg leading-relaxed text-neutral-400">
               Book OPD appointments, get a token, and visit the clinic exactly
-              when your turn comes — no queues, no crowd, no stress.
+              when your turn comes — no queues, no crowd, no stress. Pay online
+              to confirm your slot and avoid last-minute rush. Real-time token
+              updates ensure smooth and hassle-free consultations.
             </p>
 
-            {/* FEATURES */}
-            <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm text-neutral-300">
-              <Feature icon={CalendarCheck} text="Quick Appointment" />
-              <Feature icon={Clock} text="Live Token Tracking" />
-              <Feature icon={Stethoscope} text="Doctor Managed OPD" />
+            {/* STEPS GRID */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+              <Feature icon={CalendarCheck} text="Book Appointment" />
+              <Feature icon={CreditCard} text="Make Payment" />
+              <Feature icon={CheckCircle2} text="Confirmed" />
+              <Feature icon={Hash} text="Get Token" />
+              <Feature icon={Clock} text="Wait Your Turn" />
+              <Feature icon={Hospital} text="Visit Doctor" />
             </div>
+          </div>
 
-            {/* CTA BUTTONS */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-3">
-              {/* BOOK APPOINTMENT */}
-              <button
-                disabled={!isOpen}
-                onClick={() => {
-                  if (isOpen) setOpenBooking(true);
-                }}
-                className={`
-                  inline-flex items-center justify-center gap-2
-                  rounded-xl px-7 py-3 text-sm font-semibold transition
-                  ${
-                    isOpen
-                      ? "bg-white text-black hover:bg-neutral-200"
-                      : "bg-neutral-800 text-neutral-400 cursor-not-allowed"
-                  }
-                `}
-              >
-                {isOpen ? (
-                  <>
-                    <CalendarPlus className="h-5 w-5" />
-                    Book Appointment
-                  </>
-                ) : (
-                  <>
-                    <Lock className="h-5 w-5" />
-                    OPD Closed
-                  </>
-                )}
-              </button>
-
-              {/* CALL NOW */}
-              {doctor?.phone && (
-                <a
-                  href={`tel:${doctor.phone}`}
-                  className="
-                    inline-flex items-center justify-center gap-2
-                    rounded-xl border border-neutral-700
-                    bg-neutral-900/70 px-7 py-3
-                    text-sm font-semibold text-neutral-100
-                    hover:bg-neutral-800 transition
-                  "
-                >
-                  <PhoneCall className="h-5 w-5" />
-                  Call Now
-                </a>
+          {/* CTA BUTTONS */}
+          <div className="flex flex-col sm:flex-row gap-4 pt-3">
+            {/* BOOK APPOINTMENT */}
+            <button
+              disabled={!isOpen}
+              onClick={() => {
+                if (isOpen) setOpenBooking(true);
+              }}
+              className={`
+                inline-flex items-center justify-center gap-2
+                rounded-xl px-7 py-3 text-sm font-semibold transition
+                ${
+                  isOpen
+                    ? "bg-white text-black hover:bg-neutral-200"
+                    : "bg-neutral-800 text-neutral-400 cursor-not-allowed"
+                }
+              `}
+            >
+              {isOpen ? (
+                <>
+                  <CalendarPlus className="h-5 w-5" />
+                  Book Appointment
+                </>
+              ) : (
+                <>
+                  <Lock className="h-5 w-5" />
+                  OPD Closed
+                </>
               )}
-            </div>
+            </button>
+
+            {/* CALL NOW */}
+            {doctor?.phone && (
+              <a
+                href={`tel:${doctor.phone}`}
+                className="
+                  inline-flex items-center justify-center gap-2
+                  rounded-xl border border-neutral-700
+                  bg-neutral-900/70 px-7 py-3
+                  text-sm font-semibold text-neutral-100
+                  hover:bg-neutral-800 transition
+                "
+              >
+                <PhoneCall className="h-5 w-5" />
+                Call Now
+              </a>
+            )}
           </div>
         </div>
       </div>
 
-      {/* ===== BOOKING MODAL ===== */}
+      {/* BOOKING MODAL */}
       {doctor && isOpen && (
         <BookingModal
           open={openBooking}
@@ -136,13 +145,13 @@ export default function HeroSection() {
         />
       )}
 
-      {/* ===== BOTTOM FADE (SMALL) ===== */}
+      {/* BOTTOM FADE */}
       <div className="absolute bottom-0 h-16 sm:h-32 w-full bg-gradient-to-t from-black to-transparent" />
     </section>
   );
 }
 
-/* ===== FEATURE ITEM ===== */
+/* ===== FEATURE PILL ===== */
 function Feature({
   icon: Icon,
   text,
@@ -151,9 +160,22 @@ function Feature({
   text: string;
 }) {
   return (
-    <div className="flex items-center gap-2">
-      <Icon className="h-4 w-4 text-neutral-400" />
-      <span>{text}</span>
+    <div
+      className="
+        inline-flex items-center gap-2
+        rounded-xl
+        border border-neutral-800
+        bg-neutral-900/60
+        px-4 py-2
+        text-sm
+        text-neutral-200
+        backdrop-blur
+        hover:border-neutral-600
+        transition
+      "
+    >
+      <Icon className="h-4 w-4 text-emerald-400 shrink-0" />
+      <span className="whitespace-nowrap">{text}</span>
     </div>
   );
 }
