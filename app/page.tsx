@@ -36,7 +36,7 @@ export default function HomePage() {
       <main className="relative z-10 flex-1 w-full">
         {/* ===== DOCTOR PROFILE ===== */}
         {doctor && (
-          <section className=" w-full px-4 sm:px-6 lg:px-16 -mt-20 sm:-mt-28">
+          <section className="relative z-20 w-full px-4 sm:px-6 lg:px-16 -mt-12 sm:-mt-20">
             <DoctorCard doctor={doctor} />
           </section>
         )}

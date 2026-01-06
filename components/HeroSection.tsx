@@ -27,7 +27,7 @@ export default function HeroSection() {
   const isOpen = doctor?.status === "open";
 
   return (
-    <section className="relative min-h-[65vh] sm:min-h-[80vh] lg:min-h-[90vh] w-full overflow-hidden bg-black text-white">
+    <section className="relative min-h-[80vh] sm:min-h-[85vh] lg:min-h-[90vh] w-full overflow-hidden bg-black text-white pb-20 sm:pb-28 lg:pb-36">
       {/* ===== BACKGROUND GLOW ===== */}
       <div className="absolute inset-0">
         <div className="absolute -top-40 -left-40 h-[420px] w-[420px] rounded-full bg-neutral-800/40 blur-[140px]" />
