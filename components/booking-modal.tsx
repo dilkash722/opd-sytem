@@ -155,7 +155,7 @@ export function BookingModal({
                   type="submit"
                   className="bg-white text-black hover:bg-neutral-200"
                 >
-                  Confirm Appointment
+                  Pay Now
                 </Button>
               </div>
             </form>
